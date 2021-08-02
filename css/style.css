@@ -6,6 +6,10 @@
     text-decoration: none;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .max-width {
     max-width: 1300px;
     padding: 0 80px;
@@ -60,6 +64,7 @@
 }
 
 .navbar .menu li a {
+    display: block;
     color: #fff;
     font-size: 18px;
     font-weight: 500;
@@ -72,7 +77,7 @@
 }
 
 .navbar.sticky .menu li a:hover {
-    color: black;
+    color: red;
 }
 
 /* menu btn styling */
@@ -82,6 +87,33 @@
     font-size: 23px;
     cursor: pointer;
     display: none;
+}
+
+/* scroll up btn styling */
+
+.scroll-up-btn {
+    position: fixed;
+    height: 45px;
+    width: 42px;
+    background: red;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+    z-index: 9999;
+    font-size: 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.scroll-up-btn.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* home section styling */
@@ -176,13 +208,13 @@ section .title:after {
     transform: translateX(-50%);
 }
 
-/* about, services and skills section styling */
+/* about, services, skills, mydream, contact and footer section styling */
 
-.about, .services, .skills {
+.about, .services, .skills, .mydream, .contact, footer {
     font-family: Verdana, Tahoma, sans-serif;
 }
 
-.about .about-container, .services .services-container, .skills .skills-container {
+.about .about-container, .services .services-container, .skills .skills-container, .contact .contact-container {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -242,21 +274,23 @@ section .title:after {
     background: none;
 }
 
-/* services section styling */
+/* services, mydream section styling */
 
-.services {
+.services, .mydream {
     color: #fff;
     background: #111;
 }
 
-.services .title:before {
+.services .title:before, .mydream .title:before {
     background: #fff;
 }
 
-.services .title:after {
+.services .title:after, .mydream .title::after {
     background: #111;
     content: "what I do";
 }
+
+/* services section styling */
 
 .services .services-container .card {
     width: calc(33% - 20px);
@@ -386,6 +420,207 @@ section .title:after {
     width: 30%;
 }
 
+/* mydream section styling */
+
+.mydream .title::after {
+    content: "my Goals !";
+}
+
+.mydream .carousel .card {
+    background: #222;
+    border-radius: 6px;
+    padding: 25px 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.mydream .carousel .card:hover {
+    background: red;
+}
+
+.mydream .carousel .card .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.mydream .carousel .card:hover .box {
+    transform: scale(1.05);
+}
+
+.mydream .carousel .card .text {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
+
+.mydream .carousel .card img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid red;
+    transition: all 0.3s ease;
+}
+
+.mydream .carousel .card:hover img {
+    border-color: #fff;
+}
+
+/* carousel bottons */
+
+.owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.owl-dot {
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none!important;
+    border-radius: 50%;
+    border: 2px solid red!important;
+    transition: all 0.3s ease;
+}
+
+.owl-dot.active {
+    width: 35px;
+    border-radius: 14px;
+}
+
+.owl-dot.active, .owl-dot:hover {
+    background: red!important;
+}
+
+/* contact section styling */
+
+.contact .title::after {
+    content: "get in touch";
+}
+
+.contact .contact-container .column {
+    width: calc(50% - 30px);
+}
+
+.contact .contact-container .text {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.contact .contact-container .left p {
+    text-align: justify;
+}
+
+.contact .contact-container .left .icons {
+    margin: 10px 0;
+}
+
+.contact .contact-container .row {
+    display: flex;
+    height: 65px;
+    align-items: center;
+}
+
+.contact .contact-container .row .info {
+    margin-left: 30px;
+}
+
+.contact .contact-container .row i {
+    font-size: 25px;
+    color: red;
+}
+
+.contact .contact-container .info .head {
+    font-weight: 500;
+}
+
+.contact .contact-container .info .sub-title {
+    color: #333;
+}
+
+.contact .contact-container .right form .fields {
+    display: flex;
+}
+
+.contact .contact-container .right .field, .contact .contact-container .right .fields {
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contact .contact-container .right form .textarea {
+    height: 80px;
+    width: 100%;
+}
+
+.contact .contact-container .right form .name {
+    margin-right: 10px;
+}
+
+.contact .contact-container .right form .email {
+    margin-left: 10px;
+}
+
+.contact .contact-container .right form .field input, .contact .contact-container .right form .textarea textarea {
+    height: 100%;
+    width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    outline: none;
+    padding: 0 15px;
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contact .contact-container .right form .textarea textarea {
+    padding-top: 10px;
+    resize: none;
+}
+
+.contact .contact-container .right form .button {
+    height: 47px;
+    width: 170px;
+}
+
+.contact .contact-container .right form .button button {
+    width: 100%;
+    height: 100%;
+    border: 2px solid red;
+    background: red;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact .contact-container .right form .button button:hover {
+    color: red;
+    background: none;
+}
+
+/* footer section styling */
+
+footer {
+    background: #111;
+    padding: 20px 23px;
+    color: #fff;
+}
+
+footer span a {
+    color: red;
+    text-decoration: none;
+}
+
+footer span a:hover {
+    text-decoration: underline;
+}
+
 /* responsive meddia query start */
 
 @media(max-width:1300px) {
@@ -466,7 +701,7 @@ section .title:after {
         width: calc(50% - 10px);
         margin-bottom: 20px;
     }
-    .skills .skills-container .column {
+    .skills .skills-container .column, .contact .contact-container .column {
         width: 100%;
         margin-bottom: 35px;
     }
